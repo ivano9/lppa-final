@@ -1,0 +1,90 @@
+@font-face {
+  font-family: "Press Start 2P";
+  src: url("../assets/fonts/PressStart2P-Regular.ttf");
+}
+
+body {
+  font-family: "Nunito", sans-serif;
+}
+
+a,
+a:hover,
+a:visited {
+  text-decoration: none;
+  color: rgb(255, 255, 255);
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  width: 100vw;
+} 
+
+.game {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  align-items: center;
+  place-content: center;
+}
+
+.game .board {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: space-between;
+  align-content: center;
+  padding: 0 20px;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+
+.game .board .column {
+  padding: 5px;
+}
+
+.game .board .column:hover {
+  background-color: rgba(243, 84, 243, 0.25);
+  box-shadow: 3px 3px 0px 0px rgba(223, 7, 223, 1);
+  border-radius: 40px;
+  transition: ease .6s;
+}
+
+.game .board .column .spot {
+  border: solid 1px #F8CD46;
+  border-radius: 40px;
+  width: 40px;
+  height: 40px;
+  margin: 10px 0;
+  transition: ease 0.6s;
+}
+
+.game .board .column .spot.red {
+  background-color: rgb(177, 28, 120);
+}
+
+.game .board .column .spot.yellow {
+  background-color: #edf055;
+}
+
+.player-turn {
+  font-family: "Press Start 2P";
+  font-size: 17px;
+  color: #FFF;
+  padding-bottom: 1rem;
+}
+
+.displayWin {
+  font-weight: bold;
+  color: green;
+}
+
+.footer {
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+  padding: 5px;
+}
