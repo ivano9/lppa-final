@@ -1,5 +1,26 @@
-// var player1 = { name: 'You', color: 'yellow' };
-// var player2 = { name: 'AI (Easy)', color: 'red' };
+var p1 = {
+  name: '',
+  color: '',
+  time: 0
+}
+
+var p2 = {
+  name: '',
+  color: '',
+  time: 0
+}
+
+var p3 = {
+  name: '',
+  color: '',
+  time: 0
+}
+
+// var colorPicker = new iro.ColorPicker('#picker')
+// function onColorChange(color) {
+//   console.log(color.hexString)
+// }
+// colorPicker.on('color:change', onColorChange)
 // var status = 'ready'; // 'ready', 'p1Turn', 'p2Turn', 'p1Win', 'p2Win'
 var boardHTML = null
 var columnsHTML = null
@@ -140,10 +161,10 @@ var render = function () {
 }
 
 var init = function () {
+  modalExec()
   boardHTML = document.getElementById('board')
   turn = Math.random() > 0.5 ? 'yellow' : 'red'
   displayTurn(turn)
   render()
 }
-
 window.onload = init

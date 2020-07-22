@@ -54,7 +54,7 @@ a:visited {
 }
 
 .game .board .column .spot {
-  border: solid 1px #F8CD46;
+  border: solid 1px #fcd247;
   border-radius: 40px;
   width: 40px;
   height: 40px;
