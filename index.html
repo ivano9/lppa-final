@@ -10,24 +10,34 @@
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/bg.css">
     <link rel="stylesheet" href="css/style.css">
-    <script type="text/javascript" src="js/initialGameSetUp.js"></script>
+    <script type="text/javascript" src="js/Player.js"></script>
+    <script type="text/javascript" src="js/utils.js"></script>
+    <script type="text/javascript" src="js/startGame.js"></script>
+    <script type="text/javascript" src="js/setUpGame.js"></script>
     <script type="text/javascript" src="js/main.js"></script>
   </head>
 
   <body>
     <div class="wrapper">
       <!-- The Modal -->
-      <div id="iModal" class="modal">
+      <div id="i-modal" class="modal">
         <!-- Modal content -->
         <div class="modal-content">
           <p>Welcome to Connect 4 Game!</p>
           <form id="form" action="">
             <div>
-              <p class="form-content">Chose number of players</p>
-              <input type="radio" id="3p" name="players" value="3">
-              <label for="3p">Three Players</label><br>
-              <input type="radio" id="2p" name="players" value="2">
-              <label for="2p">Two Players</label><br>
+              <p class="form-content">Complete the game setup</p>
+              <label class="label" for="n2">Two Players</label>
+              <input id="n2" type="radio" name="players" value="2">
+              <label class="label" for="n3">Three Players</label>
+              <input id="n3" type="radio" name="players" value="3">
+
+              <div id="players-to-play" class="players-to-play">
+                <label class="label" for="p1">Name of player 1:</label>
+                <input id="p1" class="in-player" type="text" required>
+                <label class="label" for="p2">Name of player 2:</label>
+                <input id="p2" class="in-player" type="text" required>
+              </div>
             </div>
             <button class="button" type="submit">Setup</button>
           </form>
