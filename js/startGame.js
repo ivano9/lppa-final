@@ -1,3 +1,4 @@
+'use strict'
 // var colorPicker = new iro.ColorPicker('#picker')
 // function onColorChange(color) {
 //   console.log(color.hexString)
@@ -7,34 +8,36 @@
 var boardHTML = null
 var columnsHTML = null
 var colorCount
-var turn = ''
+var currentTurn = null
+var turnP1 = null
+var turnP2 = null
 var INLINETOWIN = 4
 
 var displayTurn = function(turn) {
   var displayTurn = document.getElementById('player-turn')
-  return displayTurn.innerHTML = turn.toUpperCase() + ' player\'s turn'
+  return displayTurn.innerHTML = turn.getPlayer().getName().toUpperCase() + ' player\'s turn'
 }
 
 var toggleTurn = function() {
-  turn = (turn === 'yellow') ? 'red' : 'yellow'
-  displayTurn(turn)
+  currentTurn = (currentTurn.getPlayer().getColor() === 'yellow') ? turnP1 : turnP2
+  displayTurn(currentTurn)
 }
 
-var gameOver = function(turnColor) {
+var gameOver = function(turn) {
   var won = document.getElementById("player-turn")
   var style = document.createElement('style');
   document.head.appendChild(style);
   style.sheet.insertRule('#board {pointer-events: none}');
-  won.innerHTML = 'Player ' + turnColor.toUpperCase() + ' WON!'
+  won.innerHTML = 'Player ' + turn.getPlayer().getName().toUpperCase() + ' WON!'
 }
 
 var columnsCheck = function(col) {
   colorCount = 0
   
   for (var i = 0; i < board[col].length; i++) {
-    if (board[col][i] === turn) {
+    if (board[col][i] === currentTurn.getPlayer().getColor()) {
       colorCount++
-      if (colorCount === INLINETOWIN) throw gameOver(turn)
+      if (colorCount === INLINETOWIN) throw gameOver(currentTurn)
     } else colorCount = 0
   }
 }
@@ -43,9 +46,9 @@ var rowsCheck = function(row) {
   colorCount = 0
   
   for (var i = 0; i < columnsHTML.length; i++) {
-    if (board[i][row] === turn) {
+    if (board[i][row] === currentTurn.getPlayer().getColor()) {
       colorCount++
-      if (colorCount === INLINETOWIN) throw gameOver(turn)
+      if (colorCount === INLINETOWIN) throw gameOver(currentTurn)
     } else colorCount = 0
   }
 }
@@ -54,16 +57,16 @@ var descDiagCheck = function(col, row) {
   colorCount = 0
   
   for (var i = col, j = row; i >= 0 && i < columnsHTML.length && j >= 0 && j < board[col].length; i++, j--){
-    if (board[i][j] === turn) {
+    if (board[i][j] === currentTurn.getPlayer().getColor()) {
       colorCount++
-      if (colorCount === INLINETOWIN) throw gameOver(turn)
+      if (colorCount === INLINETOWIN) throw gameOver(currentTurn)
     } else break
   }
   
   for (;col >= 0 && row < board[col].length; col--, row++) {
-    if (board[col][row] === turn) {
+    if (board[col][row] === currentTurn.getPlayer().getColor()) {
       colorCount++
-      if (colorCount === INLINETOWIN + 1) throw gameOver(turn)
+      if (colorCount === INLINETOWIN + 1) throw gameOver(currentTurn)
     } else return
   }
   
@@ -77,9 +80,9 @@ var ascDiagCheck = function(col, row) {
      i >= 0 && i < columnsHTML.length && j >= 0 && j < board[col].length;
      i++, j++
   ) {
-    if (board[i][j] === turn) {
+    if (board[i][j] === currentTurn.getPlayer().getColor()) {
       colorCount++
-      if (colorCount === INLINETOWIN) throw gameOver(turn)
+      if (colorCount === INLINETOWIN) throw gameOver(currentTurn)
     } else colorCount = 0
   }
   
@@ -104,7 +107,7 @@ var columnEventHandler = function(evt) {
   var columnId = +evt.target.id.substr(1, 1)
   for (var i = 0; i < board[columnId].length; i++) {
     if (!board[columnId][i]) {
-      board[columnId][i] = turn
+      board[columnId][i] = currentTurn.getPlayer().getColor()
       render()
       CheckWin(columnId,i)
       toggleTurn()
@@ -138,7 +141,11 @@ var render = function() {
 
 var startGame = function() {
   boardHTML = document.getElementById('board')
-  turn = Math.random() > 0.5 ? 'yellow' : 'red'
-  displayTurn(turn)
+  
+  turnP1 = new Turn(player1)
+  turnP2 = new Turn(player2)
+  
+  currentTurn = Math.random() > 0.5 ? turnP1 : turnP2
+  displayTurn(currentTurn)
   render()
 }

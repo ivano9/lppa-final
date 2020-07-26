@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/bg.css">
     <link rel="stylesheet" href="css/style.css">
+    <script type="text/javascript" src="js/Turn.js"></script>
     <script type="text/javascript" src="js/Player.js"></script>
     <script type="text/javascript" src="js/utils.js"></script>
     <script type="text/javascript" src="js/startGame.js"></script>
@@ -28,17 +29,17 @@
             <div>
               <p class="form-content">Complete the game setup</p>
               <label class="label" for="n2">Two Players</label>
-              <input id="n2" type="radio" name="players" value="2">
+              <input id="n2" type="radio" name="players" autocomplete="off" value="2" required>
               <label class="label" for="n3">Three Players</label>
-              <input id="n3" type="radio" name="players" value="3">
-
+              <input id="n3" type="radio" name="players" autocomplete="off" value="3" required>
               <div id="players-to-play" class="players-to-play">
                 <label class="label" for="p1">Name of player 1:</label>
-                <input id="p1" class="in-player" type="text" required>
+                <input id="p1" class="in-player" type="text" autocomplete="off" required>
                 <label class="label" for="p2">Name of player 2:</label>
-                <input id="p2" class="in-player" type="text" required>
+                <input id="p2" class="in-player" type="text" autocomplete="off" required>
               </div>
             </div>
+            <div id="message-e" class="message-error"></div>
             <button class="button" type="submit">Setup</button>
           </form>
         </div>
@@ -48,7 +49,6 @@
           <!-- <iframe src="https://www.youtube.com/embed/XccPsuqAz4E?autoplay=1&controls=0&showinfo=0&rel=0&loop=1&playlist=XccPsuqAz4E" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
         </div>
       </div>
-      <div id="picker"></div>
       <div class="game">
         <div id="player-turn" class="player-turn"></div>
         <div id="board" class="board"></div>

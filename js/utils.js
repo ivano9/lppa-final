@@ -9,3 +9,7 @@ var removeElement = function(elementId) {
   var element = document.getElementById(elementId)
   element.parentNode.removeChild(element)
 }
+
+var showMessageError = function(id, text) {
+  throw document.getElementById(id).innerText = text
+}

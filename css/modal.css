@@ -11,6 +11,7 @@
   background-color: rgb(0,0,0); /* Fallback color */
   background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
+
 .modal-content {
   background-color: #fefefe;
   margin: auto;
@@ -22,4 +23,10 @@
 
 .players-to-play {
   display: none;
+}
+
+.message-error {
+  padding: 1em 0 1em 0;
+  font-size: 15px;
+  color: #ac0a0a;
 }
