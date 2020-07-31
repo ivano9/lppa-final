@@ -70,6 +70,10 @@ a:visited {
   background-color: #edf055;
 }
 
+.game .board .column .spot.blue {
+  background-color: #3276e7;
+}
+
 .player-turn {
   font-family: "Press Start 2P";
   font-size: 17px;

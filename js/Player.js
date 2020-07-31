@@ -2,9 +2,10 @@
 
 var Player = function() {
 
-  function Player(name, color) {
+  function Player(name, color, orde) {
     this._name = name
     this._color = color
+    this._order = order
   }
   
   var proto = Player.prototype
@@ -15,6 +16,10 @@ var Player = function() {
   
   proto.getColor = function getColor() {
     return this._color
+  }
+  
+  proto.getOrder = function getOrder() {
+    return this._order
   }
   
   return Player

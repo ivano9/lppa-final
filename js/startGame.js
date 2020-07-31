@@ -11,6 +11,7 @@ var colorCount
 var currentTurn = null
 var turnP1 = null
 var turnP2 = null
+var turnP3 = null
 var INLINETOWIN = 4
 
 var displayTurn = function(turn) {
@@ -19,7 +20,18 @@ var displayTurn = function(turn) {
 }
 
 var toggleTurn = function() {
-  currentTurn = (currentTurn.getPlayer().getColor() === 'yellow') ? turnP1 : turnP2
+  if (player.three === null) currentTurn = (currentTurn.getPlayer().getName() === turnP2.getPlayer().getName()) ? turnP1 : turnP2
+  else {
+    switch (currentTurn.getPlayer().getOrder()) {
+      case 1: currentTurn = turnP2
+        break
+      case 2: currentTurn = turnP3
+        break
+      case 3: currentTurn = turnP1
+        break
+      default: console.log('Someting was wrong with turns...')
+    }
+  }
   displayTurn(currentTurn)
 }
 
@@ -134,18 +146,29 @@ var render = function() {
     }
     html += '</div>'
   }
-  
   boardHTML.innerHTML = html
   bindColumnHandlers()
 }
 
+var numberOfPlayers = function() {
+  if (player.three === null) {
+    turnP1 = new Turn(player.one)
+    turnP2 = new Turn(player.two)
+  
+    currentTurn = Math.random() > .5 ? turnP1 : turnP2
+  } else {
+    turnP1 = new Turn(player.one)
+    turnP2 = new Turn(player.two)
+    turnP3 = new Turn(player.three)
+    
+    currentTurn = (Math.random() >= 0 && Math.random() < .33) ? turnP1 :
+                  (Math.random() >= .33 && Math.random() < .66) ? turnP2 : turnP3
+  }
+}
+
 var startGame = function() {
   boardHTML = document.getElementById('board')
-  
-  turnP1 = new Turn(player1)
-  turnP2 = new Turn(player2)
-  
-  currentTurn = Math.random() > 0.5 ? turnP1 : turnP2
+  numberOfPlayers()
   displayTurn(currentTurn)
   render()
 }
