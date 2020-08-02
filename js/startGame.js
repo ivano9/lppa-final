@@ -7,27 +7,29 @@
 
 var boardHTML = null
 var columnsHTML = null
-var colorCount
 var currentTurn = null
-var turnP1 = null
-var turnP2 = null
-var turnP3 = null
+var colorCount
+var playerTurn = [
+   null,
+   null,
+   null
+]
 var INLINETOWIN = 4
 
-var displayTurn = function(turn) {
+var displayTurn = function(cTurn) {
   var displayTurn = document.getElementById('player-turn')
-  return displayTurn.innerHTML = turn.getPlayer().getName().toUpperCase() + ' player\'s turn'
+  return displayTurn.innerHTML = cTurn.getPlayer().getName().toUpperCase() + ' player\'s turn'
 }
 
 var toggleTurn = function() {
-  if (player.three === null) currentTurn = (currentTurn.getPlayer().getName() === turnP2.getPlayer().getName()) ? turnP1 : turnP2
+  if (players.length === 2) currentTurn = (currentTurn.getPlayer().getName() === playerTurn[1].getPlayer().getName()) ? playerTurn[0] : playerTurn[1]
   else {
     switch (currentTurn.getPlayer().getOrder()) {
-      case 1: currentTurn = turnP2
+      case 1: currentTurn = playerTurn[1]
         break
-      case 2: currentTurn = turnP3
+      case 2: currentTurn = playerTurn[2]
         break
-      case 3: currentTurn = turnP1
+      case 3: currentTurn = playerTurn[0]
         break
       default: console.log('Someting was wrong with turns...')
     }
@@ -150,25 +152,19 @@ var render = function() {
   bindColumnHandlers()
 }
 
-var numberOfPlayers = function() {
-  if (player.three === null) {
-    turnP1 = new Turn(player.one)
-    turnP2 = new Turn(player.two)
+var startPlayerTurn = function() {
+  for (var i = 0; players[i]; i++)
+    playerTurn[i] = new Turn(players[i])
   
-    currentTurn = Math.random() > .5 ? turnP1 : turnP2
-  } else {
-    turnP1 = new Turn(player.one)
-    turnP2 = new Turn(player.two)
-    turnP3 = new Turn(player.three)
-    
-    currentTurn = (Math.random() >= 0 && Math.random() < .33) ? turnP1 :
-                  (Math.random() >= .33 && Math.random() < .66) ? turnP2 : turnP3
-  }
+  if (players.length === 2) currentTurn = Math.random() > .5 ? playerTurn[0] : playerTurn[1]
+  else currentTurn = (Math.random() >= 0 && Math.random() < .333333333) ? playerTurn[0] :
+                  (Math.random() >= .333333333 && Math.random() < .666666666) ? playerTurn[1] : playerTurn[2]
 }
 
 var startGame = function() {
   boardHTML = document.getElementById('board')
-  numberOfPlayers()
+  startPlayerTurn()
   displayTurn(currentTurn)
+  checkLSSupport()
   render()
 }

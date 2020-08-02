@@ -11,5 +11,5 @@ var removeElement = function(elementId) {
 }
 
 var showMessageError = function(id, text) {
-  throw document.getElementById(id).innerText = text
+  document.getElementById(id).innerText = text
 }

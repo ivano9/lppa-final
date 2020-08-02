@@ -2,7 +2,7 @@
 
 var Player = function() {
 
-  function Player(name, color, orde) {
+  function Player(name, color, order) {
     this._name = name
     this._color = color
     this._order = order

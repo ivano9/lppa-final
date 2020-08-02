@@ -6,12 +6,8 @@ var radio3 = null
 var COLUMNS = 7
 var ROWS = 6
 var board = []
-var player = {
-  one: null,
-  two: null,
-  three: null
-}
-var order = 0
+var players = []
+var colors = ['red', 'yellow', 'blue']
 
 var createBoard = function() {
   for (var i = 0; i < COLUMNS; i++) {
@@ -21,37 +17,20 @@ var createBoard = function() {
 
 var setUpGame = function(e) {
   e.preventDefault()
+  var order = 0
   
   if (radio3.checked) {
     COLUMNS = 10
     ROWS = 9
-    
-    var nameP1 = document.getElementById('p1').value
-    var nameP2 = document.getElementById('p2').value
-    var nameP3 = document.getElementById('p3').value
-    
-    if (validInput(nameP1) && validInput(nameP2) && validInput(nameP3)) {
-      player.one = new Player(nameP1, 'red', ++order)
-      player.two = new Player(nameP2, 'yellow', ++order)
-      player.three = new Player(nameP3, 'blue', ++order)
-
-    } else {
-      showMessageError('message-e', 'The name must have 3 character or more')
-    }
-    
-  } else {
-    
-    var nameP1 = document.getElementById('p1').value
-    var nameP2 = document.getElementById('p2').value
-  
-    if (validInput(nameP1) && validInput(nameP2)) {
-      player.one = new Player(nameP1, 'red', ++order)
-      player.two = new Player(nameP2, 'yellow', ++order)
-      
-    } else {
-      showMessageError('message-e', 'The name must have 3 character or more')
-    }
   }
+  
+  var inputPlayers = document.querySelectorAll('input.in-player')
+  
+  for (var i = 0; i < inputPlayers.length; i++)
+    if (!validInput(inputPlayers[i].value)) return showMessageError('message-e', 'The name must have 3 character or more')
+
+  for (var i = 0; i < inputPlayers.length; i++)
+    players.push(new Player(inputPlayers[i].value, colors[i], ++order))
   
   createBoard()
   startGame()

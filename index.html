@@ -15,6 +15,7 @@
     <script type="text/javascript" src="js/utils.js"></script>
     <script type="text/javascript" src="js/startGame.js"></script>
     <script type="text/javascript" src="js/setUpGame.js"></script>
+    <script type="text/javascript" src="js/LSCurrentGame.js"></script>
     <script type="text/javascript" src="js/main.js"></script>
   </head>
 
@@ -40,7 +41,7 @@
               </div>
             </div>
             <div id="message-e" class="message-error"></div>
-            <button class="button" type="submit">Setup</button>
+            <button class="" type="submit">Setup</button>
           </form>
         </div>
       </div>
@@ -52,6 +53,10 @@
       <div class="game">
         <div id="player-turn" class="player-turn"></div>
         <div id="board" class="board"></div>
+        <div id="sl-btn" class="sl-buttons">
+          <button id="btn-save" class="button">Save turn</button>
+          <button id="btn-load" class="button">Load turn</button>
+        </div>
       </div>
       <div class="footer">
         <a href="#">Nada</a>
