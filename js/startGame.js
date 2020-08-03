@@ -9,11 +9,7 @@ var boardHTML = null
 var columnsHTML = null
 var currentTurn = null
 var colorCount
-var playerTurn = [
-   null,
-   null,
-   null
-]
+var playerTurn = []
 var INLINETOWIN = 4
 
 var displayTurn = function(cTurn) {
@@ -83,7 +79,6 @@ var descDiagCheck = function(col, row) {
       if (colorCount === INLINETOWIN + 1) throw gameOver(currentTurn)
     } else return
   }
-  
 }
 
 var ascDiagCheck = function(col, row) {
@@ -154,7 +149,7 @@ var render = function() {
 
 var startPlayerTurn = function() {
   for (var i = 0; players[i]; i++)
-    playerTurn[i] = new Turn(players[i])
+    playerTurn.push(new Turn(players[i]))
   
   if (players.length === 2) currentTurn = Math.random() > .5 ? playerTurn[0] : playerTurn[1]
   else currentTurn = (Math.random() >= 0 && Math.random() < .333333333) ? playerTurn[0] :

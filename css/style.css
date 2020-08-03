@@ -7,12 +7,12 @@ body {
   font-family: "Nunito", sans-serif;
 }
 
-a,
-a:hover,
-a:visited {
-  text-decoration: none;
-  color: rgb(255, 255, 255);
-}
+/*a,*/
+/*a:hover,*/
+/*a:visited {*/
+/*  text-decoration: none;*/
+/*  color: rgb(255, 255, 255);*/
+/*}*/
 
 .wrapper {
   display: flex;

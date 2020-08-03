@@ -2,12 +2,14 @@
 Desarrollar una version web del juego "4 en Linea" (https://es.wikipedia.org/wiki/Conecta_4) con las siguientes consideraciones:
 
 Requerido:
-  * Desarrollar el juego para que sea jugable desde una computadora o un celular cumpliendo con las reglas originales descriptas en wikipedia.
-  * El diseño gráfico y estilo visual del juego y la pagina web debe ser propio e individual, no se puede reutilizar el estilo ni el CSS desarrollado en clase.
-  * Consistencia y prolijidad en comentarios, commits y estilos de código.
-  * Estética del juego y la web (usando Flexbox).
+  - Desarrollar el juego para que sea jugable desde una computadora o un celular cumpliendo con las reglas originales
+  descriptas en wikipedia.
+  - El diseño gráfico y estilo visual del juego y la pagina web debe ser propio e individual, no se puede reutilizar el
+  estilo ni el CSS desarrollado en clase.
+  - Consistencia y prolijidad en comentarios, commits y estilos de código.
+  - Estética del juego y la web (usando Flexbox).
   * Agregar un contador del tiempo consumido por cada jugador. Es decir, cuando un jugador comienza su turno se debe contar el tiempo hasta que coloca una ficha en el tablero y acumularlo al tiempo total utilizado por ese jugador. Cuando coloca la ficha cambia de turno y el tiempo se acumula para el otro jugador.
-  * Detectar el momento en que un jugador gana y mostrar un cartel de felicitaciones para el ganador.
+  - Detectar el momento en que un jugador gana y mostrar un cartel de felicitaciones para el ganador.
   * Detectar el momento en que no hay mas movimientos posibles porque el tablero esta lleno y nadie gano. 
   Mostrar un cartel informando que no se pueden poner mas fichar y un botón para volver a jugar.
   * Agregar funcionalidad de guardar y cargar partida en el juego usando LocalStorage. Puede haber multiples partidas guardadas y se debe mostrar la lista recordando el estado de la partida y los jugadores.

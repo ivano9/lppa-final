@@ -1,4 +1,6 @@
 'use strict'
+var id = -1,
+   mSavedGames = null
 
 Storage.prototype.setObj = function(key, obj) {
   return this.setItem(key, JSON.stringify(obj))
@@ -40,55 +42,87 @@ var addLSButtons = function() {
 }
 
 var saveGame = function() {
-    var currentGame = {
-      board: board,
-      players: [
-        {
-          name: turnP1.getPlayer().getName(),
-          color: turnP1.getPlayer().getColor(),
-          order: turnP1.getPlayer().getOrder(),
-          time: turnP1.getTime(),
-          turnCount: turnP1.getTurnCount()
-        },
-        {
-          name: turnP2.getPlayer().getName(),
-          color: turnP2.getPlayer().getColor(),
-          order: turnP2.getPlayer().getOrder(),
-          time: turnP2.getTime(),
-          turnCount: turnP2.getTurnCount()
-        },
-        {
-          name: turnP3.getPlayer().getName(),
-          color: turnP3.getPlayer().getColor(),
-          order: turnP3.getPlayer().getOrder(),
-          time: turnP3.getTime(),
-          turnCount: turnP3.getTurnCount()
-        }
-      ],
-      cTurn: currentTurn.getPlayer().getName(),
-      dateNow: new Date().toLocaleString("en-GB")
-    }
+  var currentGame = {
+    board: board,
+    players: [],
+    cTurn: currentTurn.getPlayer().getName(),
+    dateNow: new Date().toLocaleString("en-GB")
+  }
   
-    localStorage.setObj('saveTurn - ' + 1 , currentGame)
+  for (var i = 0; i < playerTurn.length; i++){
+    currentGame.players.push({
+        name: playerTurn[i].getPlayer().getName(),
+        color: playerTurn[i].getPlayer().getColor(),
+        order: playerTurn[i].getPlayer().getOrder(),
+        time: playerTurn[i].getTime(),
+        turnCount: playerTurn[i].getTurnCount()
+      }
+    )
+  }
+  
+  localStorage.setObj('saveTurn #' + ++id, currentGame)
+}
+
+var loadingPoint = function(linkId) {
+  var LSKey = localStorage.getObj(linkId)
+  board = LSKey.board
+  players = []
+  playerTurn = []
+  for (var i = 0; i < LSKey.players.length; i++) {
+    players.push(new Player(LSKey.players[i].name, LSKey.players[i].color, LSKey.players[i].order))
+    playerTurn.push(new Turn(players[i]))
+    playerTurn[i].setTime(LSKey.players.time)
+    playerTurn[i].setTurnCount(LSKey.players.turnCount)
+  }
+  
+  for (var i = 0; i < playerTurn.length; i++)
+    if (LSKey.cTurn === playerTurn[i].getPlayer().getName()) currentTurn = playerTurn[i]
+  
+  mSavedGames.style.display = 'none'
+  
+  displayTurn(currentTurn)
+  render()
+}
+
+var linkEventHandler = function(evt) {
+  loadingPoint(evt.target.id)
+}
+
+var mouseOverLinkHandler = function() {
+  var links = document.getElementsByClassName('link-storage')
+  for (var i = 0; i < links.length; i++) {
+    links[i].onclick = linkEventHandler
+  }
+}
+
+var showModalSavedGame = function() {
+  var LSKeys = Object.keys(localStorage),
+      html = ''
+  
+  mSavedGames = document.getElementById('modal-saved-games')
+  
+  html += '<div id="modal-list" class="modal-content-ls">'
+  html += '<p>Saved game points</p>'
+  html += '<hr>'
+  html += '<div class="list-sg">'
+  for (var i = 0; i < LSKeys.length; i++) {
+    html += '<a id="' + LSKeys[i] + '" class="link-storage" href="#">' + LSKeys[i] + ' - ' + localStorage.getObj(LSKeys[i]).dateNow + '</a>'
+  }
+  html += '</div>'
+  html += '<button id="btn-close" class="btn" type="button">Close</button>'
+  html += '</div>'
+  mSavedGames.innerHTML = html
+  mSavedGames.style.display = 'block'
+  
+  var btnClose = document.getElementById('btn-close')
+  btnClose.onclick = function() {
+    mSavedGames.style.display = 'none'
+  }
 }
 
 var loadGame = function() {
-  board = localStorage.getObj('saveTurn - 1').board
-  var lsKey = localStorage.getItem('saveTurn - 1')
-  var pName =  lsKey.players[0].name
-  var pColor = lsKey.players[0].color
-  var pOrder = lsKey.players[0].order
-  var pTime = lsKey.players[0].time
-  var pTurnCount = lsKey.players[0].turnCount
-  
-  player.one = new Player(localStorage.getItem('saveTurn - 1').players, 'red', ++order)
-  player.two = new Player(nameP2, 'yellow', ++order)
-  player.three = new Player(nameP3, 'blue', ++order)
-  
-  
-  console.log(currentTurn)
-  displayTurn(currentTurn)
-  render()
+  showModalSavedGame()
+  mouseOverLinkHandler()
 }
 
 var saveGameEvent = function() {

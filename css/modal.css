@@ -1,3 +1,11 @@
+
+a:visited {
+  text-decoration: none;
+}
+a:hover {
+  color: #c92c86;
+}
+
 .modal {
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
@@ -8,26 +16,83 @@
   width: 100%; /* Full width */
   height: 100%; /* Full height */
   overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
 }
 
 .modal-content {
-  background-color: #fefefe;
   margin: auto;
   padding: 20px;
   border: 1px solid #888;
   border-radius: 20px;
   width: 80%;
   color: #ab22f1;
+  background-color: #fefefe;
+}
+
+.player-label-content{
+  padding-top: 10px;
 }
 
 .players-to-play {
   display: none;
 }
 
+.label-input {
+  padding-top: 10px;
+}
+
 .message-error {
   padding: 1em 0 1em 0;
   font-size: 15px;
-  color: #ac0a0a;
+}
+
+.modal-saved-games {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 35%;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0); /* Black w/ opacity */
+}
+
+.modal-content-ls {
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  border-radius: 20px;
+  width: 50%;
+  color: #ab22f1;
+  background-color: #fefefe;
+}
+
+.btn {
+  padding: 3px 1em;
+  background-color: #eee9e9;
+  border-bottom: solid 1px #fcd247;
+  color: #1d1d1d;
+}
+
+.btn:hover {
+  background-color: #ab22f1;
+  color: #ffffff;
+}
+
+.modal-content-ls a {
+  text-decoration: underline;
+}
+
+.list-sg {
+  display: flex;
+  flex-flow: column wrap;
+  padding-bottom: 1em;
+}
+
+.link-storage {
+  padding: 6px 0px;
 }

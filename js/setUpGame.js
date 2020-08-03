@@ -38,21 +38,27 @@ var setUpGame = function(e) {
 }
 
 var showInput3Players = function() {
-  var numberPlayers = document.getElementById('players-to-play')
-  var numberPlayersClass = document.getElementsByClassName('in-player')
+  var numberPlayers = document.getElementById('players-to-play'),
+      numberOfInputs = document.querySelectorAll('input.in-player'),
+      html = ''
   
-  if (numberPlayersClass.length < 3) {
-    numberPlayers.innerHTML += '<label id="l3" class="label" for="p3">Name of player 3:</label>' +
-       '<input id="p3" class="in-player" type="text" required>'
+  if (numberOfInputs.length < 3) {
+    html += '<div class="label-input">'
+    html += '<label id="l3" class="label" for="p3">Name of player 3: </label>'
+    html += '<input id="p3" class="in-player" type="text" required> </div>'
+    numberPlayers.innerHTML += html
     numberPlayers.style.display = 'block'
   }
 }
 
 var showInput2Players = function() {
   var numberPlayers = document.getElementById('players-to-play')
-  var numberPlayersClass = document.getElementsByClassName('in-player')
+  var numberOfInputs = document.querySelectorAll('input.in-player')
   
-  if (numberPlayersClass.length > 2) {
+  for (var i = 0; i < numberOfInputs.length; i++)
+    numberOfInputs[i].value = ''
+  
+  if (numberOfInputs.length > 2) {
     removeElement('l3')
     removeElement('p3')
   }

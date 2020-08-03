@@ -11,5 +11,6 @@ var removeElement = function(elementId) {
 }
 
 var showMessageError = function(id, text) {
+  document.getElementById(id).style.color = '#ac0a0a'
   document.getElementById(id).innerText = text
 }

@@ -26,18 +26,27 @@
         <!-- Modal content -->
         <div class="modal-content">
           <p>Welcome to Connect 4 Game!</p>
+          <hr>
           <form id="form" action="">
             <div>
               <p class="form-content">Complete the game setup</p>
-              <label class="label" for="n2">Two Players</label>
-              <input id="n2" type="radio" name="players" autocomplete="off" value="2" required>
-              <label class="label" for="n3">Three Players</label>
-              <input id="n3" type="radio" name="players" autocomplete="off" value="3" required>
+              <div class="player-label-content">
+                <label class="label" for="n2">Two Players</label>
+                <input id="n2" type="radio" name="players" autocomplete="off" value="2" required>
+              </div>
+              <div class="player-label-content">
+                <label class="label" for="n3">Three Players</label>
+                <input id="n3" type="radio" name="players" autocomplete="off" value="3" required>
+              </div>
               <div id="players-to-play" class="players-to-play">
-                <label class="label" for="p1">Name of player 1:</label>
-                <input id="p1" class="in-player" type="text" autocomplete="off" required>
-                <label class="label" for="p2">Name of player 2:</label>
-                <input id="p2" class="in-player" type="text" autocomplete="off" required>
+                <div class="label-input">
+                  <label class="label" for="p1">Name of player 1:</label>
+                  <input id="p1" class="in-player" type="text" autocomplete="off" required>
+                </div>
+                <div class="label-input">
+                  <label class="label" for="p2">Name of player 2:</label>
+                  <input id="p2" class="in-player" type="text" autocomplete="off" required>
+                </div>
               </div>
             </div>
             <div id="message-e" class="message-error"></div>
@@ -57,6 +66,7 @@
           <button id="btn-save" class="button">Save turn</button>
           <button id="btn-load" class="button">Load turn</button>
         </div>
+        <div id="modal-saved-games" class="modal-saved-games"></div>
       </div>
       <div class="footer">
         <a href="#">Nada</a>
