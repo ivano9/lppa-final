@@ -1,13 +1,13 @@
 'use strict'
 
-var modal = null
-var radio2 = null
-var radio3 = null
-var COLUMNS = 7
-var ROWS = 6
-var board = []
-var players = []
-var colors = ['red', 'yellow', 'blue']
+var modal = null,
+    radio2 = null,
+    radio3 = null,
+    COLUMNS = 7,
+    ROWS = 6,
+    board = [],
+    players = [],
+    colors = ['b3d4fc', 'edf055', 'ab22f1']
 
 var createBoard = function() {
   for (var i = 0; i < COLUMNS; i++) {
@@ -52,8 +52,8 @@ var showInput3Players = function() {
 }
 
 var showInput2Players = function() {
-  var numberPlayers = document.getElementById('players-to-play')
-  var numberOfInputs = document.querySelectorAll('input.in-player')
+  var numberPlayers = document.getElementById('players-to-play'),
+      numberOfInputs = document.querySelectorAll('input.in-player')
   
   for (var i = 0; i < numberOfInputs.length; i++)
     numberOfInputs[i].value = ''

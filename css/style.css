@@ -7,13 +7,6 @@ body {
   font-family: "Nunito", sans-serif;
 }
 
-/*a,*/
-/*a:hover,*/
-/*a:visited {*/
-/*  text-decoration: none;*/
-/*  color: rgb(255, 255, 255);*/
-/*}*/
-
 .wrapper {
   display: flex;
   flex-direction: column;
@@ -62,16 +55,16 @@ body {
   transition: ease 0.6s;
 }
 
-.game .board .column .spot.red {
-  background-color: rgb(177, 28, 120);
+.game .board .column .spot.b3d4fc {
+  background-color: #b3d4fc;
 }
 
-.game .board .column .spot.yellow {
+.game .board .column .spot.edf055 {
   background-color: #edf055;
 }
 
-.game .board .column .spot.blue {
-  background-color: #3276e7;
+.game .board .column .spot.ab22f1 {
+  background-color: #ab22f1;
 }
 
 .player-turn {

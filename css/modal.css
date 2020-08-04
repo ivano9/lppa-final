@@ -66,7 +66,7 @@ a:hover {
   padding: 20px;
   border: 1px solid #888;
   border-radius: 20px;
-  width: 50%;
+  width: 30em;
   color: #ab22f1;
   background-color: #fefefe;
 }
@@ -95,4 +95,12 @@ a:hover {
 
 .link-storage {
   padding: 6px 0px;
+}
+
+.tied-game {
+  text-align: center;
+  padding-bottom: 1em;
+  font-family: "Press Start 2P";
+  font-size: 20px;
+  color: #231f1f;
 }

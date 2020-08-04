@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LPPA 2020 - 4 in Line</title>
     <script async src="https://cdn.jsdelivr.net/npm/@jaames/iro@5"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
     <link rel="stylesheet" href="css/modal.css">
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/bg.css">
@@ -13,6 +12,7 @@
     <script type="text/javascript" src="js/Turn.js"></script>
     <script type="text/javascript" src="js/Player.js"></script>
     <script type="text/javascript" src="js/utils.js"></script>
+    <script type="text/javascript" src="js/timer.js"></script>
     <script type="text/javascript" src="js/startGame.js"></script>
     <script type="text/javascript" src="js/setUpGame.js"></script>
     <script type="text/javascript" src="js/LSCurrentGame.js"></script>
@@ -61,15 +61,20 @@
       </div>
       <div class="game">
         <div id="player-turn" class="player-turn"></div>
+        <div id="timer" class="player-turn">SADASA</div>
         <div id="board" class="board"></div>
         <div id="sl-btn" class="sl-buttons">
           <button id="btn-save" class="button">Save turn</button>
           <button id="btn-load" class="button">Load turn</button>
         </div>
-        <div id="modal-saved-games" class="modal-saved-games"></div>
+        <div id="cr-btn" class="sl-buttons">
+          <button id="btn-clean-board" class="button">Clean Board</button>
+          <button id="btn-restart-game" class="button">Restart Game</button>
+        </div>
+        <div id="modal-games" class="modal-saved-games"></div>
       </div>
       <div class="footer">
-        <a href="#">Nada</a>
+        <a href="contact.html">Contact Us</a>
       </div>
     </div>
   </body>

@@ -10,9 +10,10 @@ Requerido:
   - Estética del juego y la web (usando Flexbox).
   * Agregar un contador del tiempo consumido por cada jugador. Es decir, cuando un jugador comienza su turno se debe contar el tiempo hasta que coloca una ficha en el tablero y acumularlo al tiempo total utilizado por ese jugador. Cuando coloca la ficha cambia de turno y el tiempo se acumula para el otro jugador.
   - Detectar el momento en que un jugador gana y mostrar un cartel de felicitaciones para el ganador.
-  * Detectar el momento en que no hay mas movimientos posibles porque el tablero esta lleno y nadie gano. 
+  - Detectar el momento en que no hay mas movimientos posibles porque el tablero esta lleno y nadie gano.
   Mostrar un cartel informando que no se pueden poner mas fichar y un botón para volver a jugar.
-  * Agregar funcionalidad de guardar y cargar partida en el juego usando LocalStorage. Puede haber multiples partidas guardadas y se debe mostrar la lista recordando el estado de la partida y los jugadores.
+  - Agregar funcionalidad de guardar y cargar partida en el juego usando LocalStorage. Puede haber multiples partidas
+  guardadas y se debe mostrar la lista recordando el estado de la partida y los jugadores.
   * Utilizar Github Pages para jugar el juego online y hacer referencia al link del juego desde el archivo Readme.
   * Agregar un archivo Readme prolijo con Titulo, Descripción del juego, link a Github Pages y cualquier otra información que consideren importante.
 
