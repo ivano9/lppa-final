@@ -25,11 +25,11 @@
       <div id="i-modal" class="modal">
         <!-- Modal content -->
         <div class="modal-content">
-          <p>Welcome to Connect 4 Game!</p>
+          <p class="modal-title">Welcome to Connect 4 Game!</p>
           <hr>
           <form id="form" action="">
             <div>
-              <p class="form-content">Complete the game setup</p>
+              <p class="modal-subtitle">Chose number of players</p>
               <div class="player-label-content">
                 <label class="label" for="n2">Two Players</label>
                 <input id="n2" type="radio" name="players" autocomplete="off" value="2" required>
@@ -50,18 +50,18 @@
               </div>
             </div>
             <div id="message-e" class="message-error"></div>
-            <button class="" type="submit">Setup</button>
+            <button class="btn" type="submit">Setup</button>
           </form>
         </div>
       </div>
       <div class="video-background">
         <div class="video-foreground">
-          <!-- <iframe src="https://www.youtube.com/embed/XccPsuqAz4E?autoplay=1&controls=0&showinfo=0&rel=0&loop=1&playlist=XccPsuqAz4E" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
+<!--           <iframe src="https://www.youtube.com/embed/XccPsuqAz4E?autoplay=1&controls=0&showinfo=0&rel=0&loop=1&playlist=XccPsuqAz4E" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>-->
         </div>
       </div>
       <div class="game">
         <div id="player-turn" class="player-turn"></div>
-        <div id="timer" class="player-turn">SADASA</div>
+        <div id="timer" class="player-turn"></div>
         <div id="board" class="board"></div>
         <div id="sl-btn" class="sl-buttons">
           <button id="btn-save" class="button">Save turn</button>

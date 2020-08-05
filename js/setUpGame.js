@@ -43,7 +43,7 @@ var showInput3Players = function() {
       html = ''
   
   if (numberOfInputs.length < 3) {
-    html += '<div class="label-input">'
+    html += '<div id="l-p-3" class="label-input">'
     html += '<label id="l3" class="label" for="p3">Name of player 3: </label>'
     html += '<input id="p3" class="in-player" type="text" required> </div>'
     numberPlayers.innerHTML += html
@@ -59,8 +59,7 @@ var showInput2Players = function() {
     numberOfInputs[i].value = ''
   
   if (numberOfInputs.length > 2) {
-    removeElement('l3')
-    removeElement('p3')
+    removeElement('l-p-3')
   }
   
   numberPlayers.style.display = 'block'

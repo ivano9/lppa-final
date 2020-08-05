@@ -4,21 +4,30 @@ var Turn = function() {
   
   function Turn(player) {
     this._player = player
-    this._time = 0
+    this._min = '00'
+    this._sec = '00'
   }
   
   var proto = Turn.prototype
   
-  proto.getTime = function getTime() {
-    return this._time
+  proto.getMin = function getMin() {
+    return this._min
+  }
+  
+  proto.getSec = function getSec() {
+    return this._sec
   }
   
   proto.getPlayer = function getPlayer() {
     return this._player
   }
   
-  proto.setTime = function setTime(time) {
-    this._time = time
+  proto.setMin = function setMin(min) {
+    this._min = min
+  }
+  
+  proto.setSec = function setSec(sec) {
+    this._sec = sec
   }
   
   return Turn

@@ -17,6 +17,7 @@ var boardHTML = null,
 var displayTurn = function(cTurn) {
   var displayTurn = document.getElementById('player-turn')
   displayTurn.style.color = '#' + cTurn.getPlayer().getColor()
+  displayTimer(cTurn.getMin(),cTurn.getSec())
   return displayTurn.innerHTML = cTurn.getPlayer().getName().toUpperCase() + ' player\'s turn'
 }
 
@@ -39,7 +40,7 @@ var toggleTurn = function() {
         currentTurn = playerTurn[0]
         moves++
         break
-      default: console.log('Someting was wrong with turns...')
+      default: console.log('Something was wrong with turns...')
     }
   }
   displayTurn(currentTurn)
@@ -47,6 +48,7 @@ var toggleTurn = function() {
 
 var gameOver = function(turn) {
   var won = document.getElementById("player-turn")
+  stopTimer = true
   boardHTML.style.pointerEvents = 'none'
   won.innerHTML = 'Player ' + turn.getPlayer().getName().toUpperCase() + ' WON!'
 }
@@ -80,7 +82,13 @@ var showModalTie = function() {
 }
 
 var checkTie = function() {
-  if (moves === 42) {
+  if (players.length === 2)
+    if (moves === 42) {
+    stopTimer = true
+    showModalTie()
+  }
+  else if (moves === 90) {
+    stopTimer = true
     showModalTie()
   }
 }
@@ -138,8 +146,6 @@ var ascDiagCheck = function(col, row) {
       if (colorCount === INLINETOWIN) throw gameOver(currentTurn)
     } else colorCount = 0
   }
-  
-  // if (colorCount < INLINETOWIN) colorCount = 0
 }
 
 var checkWin = function(col, row) {
