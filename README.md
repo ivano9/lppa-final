@@ -10,7 +10,7 @@ This is the web repo for LPPA 2020 final project. A web version of the table gam
 * Detect when are a draw.
 
 ## View online
-View the game hosted on [Github Pages](https://ivano9.github.io/lppa-class-conect4/)
+View the game hosted on [Github Pages](https://ivano9.github.io/lppa-final/connect4-game/)
 
 ## Author
 Authored by [Iván Giovanazzi](https://www.linkedin.com/in/ivanog/ "LinkedIn Profile")
