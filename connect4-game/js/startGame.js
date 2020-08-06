@@ -50,6 +50,8 @@ var gameOver = function(turn) {
   var won = document.getElementById("player-turn")
   stopTimer = true
   boardHTML.style.pointerEvents = 'none'
+  won.style.transition = 'ease 0.9s'
+  won.style.backgroundColor = '#ab22f1'
   won.innerHTML = 'Player ' + turn.getPlayer().getName().toUpperCase() + ' WON!'
 }
 

@@ -74,9 +74,9 @@ a:hover {
 }
 
 .modal-content-ls {
+  border: 1px solid #888;
   margin: auto;
   padding: 20px;
-  border: 1px solid #888;
   border-radius: 20px;
   width: 30em;
   color: #ab22f1;
@@ -84,10 +84,10 @@ a:hover {
 }
 
 .btn {
+  border-bottom: solid 1px #fcd247;
   padding: 3px 1em;
   margin-right: 10px;
   background-color: #eee9e9;
-  border-bottom: solid 1px #fcd247;
   color: #1d1d1d;
 }
 

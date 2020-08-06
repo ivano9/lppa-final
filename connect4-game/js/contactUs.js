@@ -37,7 +37,7 @@ var sendMessage = function(e) {
   e.preventDefault()
   
   var inputs = document.querySelectorAll('.contact-input'),
-    errors = ''
+      errors = ''
 
   for (var i = 0; i < inputs.length; i++) {
     switch (inputs[i].type) {
