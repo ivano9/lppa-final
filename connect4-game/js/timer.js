@@ -1,4 +1,5 @@
 'use strict'
+
 var stopTimer = false
 
 var displayTimer = function(minutes, seconds) {
@@ -13,7 +14,7 @@ var displayTimer = function(minutes, seconds) {
   startTimer(minutes, seconds)
 }
 
-var pad = function (val) {
+var pad = function(val) {
   var valString = val + ""
   return (valString.length < 2) ? "0" + valString : valString
 }
@@ -23,7 +24,7 @@ var startTimer = function(min, secs) {
       secondsLabel = document.getElementById("sec"),
       totalSeconds = secs
   
-  var setTime = function () {
+  var setTime = function() {
     if (stopTimer) clearInterval(countUpTimer)
 
     ++totalSeconds

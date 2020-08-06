@@ -20,11 +20,11 @@ var isValidEmail = function(email) {
   return re.test(email)
 }
 
-var isValidName = function (name) {
+var isValidName = function(name) {
   var re = /^[a-z0-9]+$/i
   return re.test(name)
 }
 
-var isValidContactMessage = function (message) {
+var isValidContactMessage = function(message) {
   return message.length > 5
 }

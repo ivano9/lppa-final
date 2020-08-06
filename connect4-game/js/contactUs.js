@@ -54,7 +54,8 @@ var sendMessage = function(e) {
   else return window.open('mailto:connect4Game@email.com')
 }
 
-var closeContactModal = function() {
+var closeContactModal = function () {
+  document.querySelector('#contact-message-error').textContent = ''
   document.querySelector('.modal-contact').style.display = 'none'
 }
 
