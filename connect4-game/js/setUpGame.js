@@ -27,13 +27,15 @@ var setUpGame = function(e) {
   var inputPlayers = document.querySelectorAll('input.in-player')
   
   for (var i = 0; i < inputPlayers.length; i++)
-    if (!validInput(inputPlayers[i].value)) return showMessageError('message-e', 'The name must have 3 character or more')
+    if (!validInput(inputPlayers[i].value,0)) return showMessageError('message-e', 'The name must have 3 character or' +
+       ' more')
 
   for (var i = 0; i < inputPlayers.length; i++)
     players.push(new Player(inputPlayers[i].value, colors[i], ++order))
   
   createBoard()
   startGame()
+  contactUs()
   modal.style.display = 'none'
 }
 

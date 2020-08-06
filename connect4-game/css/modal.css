@@ -25,7 +25,7 @@ a:hover {
   padding: 20px;
   border: 1px solid #888;
   border-radius: 20px;
-  width: 60em;
+  max-width: 50vw;
   color: #ab22f1;
   background-color: #fefefe;
 }
@@ -85,6 +85,7 @@ a:hover {
 
 .btn {
   padding: 3px 1em;
+  margin-right: 10px;
   background-color: #eee9e9;
   border-bottom: solid 1px #fcd247;
   color: #1d1d1d;

@@ -93,9 +93,7 @@ var saveGame = function() {
     currentGame.players.push({
         name: playerTurn[i].getPlayer().getName(),
         color: playerTurn[i].getPlayer().getColor(),
-        order: playerTurn[i].getPlayer().getOrder(),
-        min: playerTurn[i].getMin(),
-        sec: playerTurn[i].getSec()
+        order: playerTurn[i].getPlayer().getOrder()
       }
     )
   }
@@ -114,8 +112,6 @@ var loadingPoint = function(linkId) {
   for (var i = 0; i < LSKey.players.length; i++) {
     players.push(new Player(LSKey.players[i].name, LSKey.players[i].color, LSKey.players[i].order))
     playerTurn.push(new Turn(players[i]))
-    playerTurn[i].setMin(LSKey.players.min)
-    playerTurn[i].setSec(LSKey.players.sec)
   }
   
   for (var i = 0; i < playerTurn.length; i++)
