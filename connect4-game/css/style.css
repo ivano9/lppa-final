@@ -9,12 +9,19 @@ body {
 
 .wrapper {
   display: flex;
-  flex-direction: column;
+  flex-flow: column wrap;
   align-items: center;
   justify-content: center;
   min-height: 100vh;
   width: 100vw;
-} 
+}
+
+.rectangle {
+  margin: auto;
+  padding: 3em 0;
+  border-radius: 15px;
+  background-color: rgba(0, 0, 0, .6);
+}
 
 .game {
   display: flex;
@@ -40,10 +47,10 @@ body {
 }
 
 .game .board .column:hover {
-  background-color: rgba(243, 84, 243, 0.25);
   box-shadow: 3px 3px 0px 0px rgba(223, 7, 223, 1);
   border-radius: 40px;
   transition: ease .6s;
+  background-color: rgba(243, 84, 243, 0.25);
 }
 
 .game .board .column .spot {
@@ -72,6 +79,7 @@ body {
   font-size: 17px;
   color: #FFF;
   padding: 1em;
+  border-radius: 10px;
 }
 
 .displayWin {
@@ -81,14 +89,14 @@ body {
 
 .button {
   padding: 3px 1em;
-  background-color: transparent;
   border-bottom: solid 1px #fcd247;
   color: #fefefe;
+  background-color: transparent;
 }
 
 .button:hover {
-  background-color: #fefefe;
   color: #222222;
+  background-color: #fefefe;
 }
 
 .sl-buttons {
@@ -98,7 +106,7 @@ body {
 
 .footer {
   display: flex;
-  flex-direction: row;
+  flex-flow: row wrap;
   text-align: center;
   padding: 5px;
 }

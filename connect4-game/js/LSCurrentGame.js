@@ -129,9 +129,8 @@ var linkEventHandler = function(evt) {
 
 var mouseOverLinkHandler = function() {
   var links = document.getElementsByClassName('link-storage')
-  for (var i = 0; i < links.length; i++) {
+  for (var i = 0; i < links.length; i++)
     links[i].onclick = linkEventHandler
-  }
 }
 
 var showModalSavedGame = function() {
@@ -144,9 +143,8 @@ var showModalSavedGame = function() {
   html += '<p>Saved game points</p>'
   html += '<hr>'
   html += '<div class="list-sg">'
-  for (var i = 0; i < LSKeys.length; i++) {
+  for (var i = 0; i < LSKeys.length; i++)
     html += '<a id="' + LSKeys[i] + '" class="link-storage" href="#">' + LSKeys[i] + ' - ' + localStorage.getObj(LSKeys[i]).dateNow + '</a>'
-  }
   html += '</div>'
   html += '<button id="btn-close" class="btn" type="button">Close</button>'
   html += '</div>'

@@ -38,14 +38,14 @@ var sendMessage = function(e) {
   
   var inputs = document.querySelectorAll('.contact-input'),
       errors = ''
-
+  
   for (var i = 0; i < inputs.length; i++) {
     switch (inputs[i].type) {
-      case 'email': errors += (!isValidEmail(inputs[i].value)) ? 'The email is not vaild.' : errors
+      case 'email': errors += (!isValidEmail(inputs[i].value)) ? ' The email is not vaild.' : ''
         break
-      case 'text': errors += (!isValidName(inputs[i].value) || !validInput(inputs[i].value)) ? ' The name must have 3 or more characters and must be alphanumeric.' : errors
+      case 'text': errors += (!isValidName(inputs[i].value) || !validInput(inputs[i].value)) ? ' The name must have 3 or more characters and must be alphanumeric.' : ''
         break
-      case 'textarea': errors += (!isValidContactMessage(inputs[i].value)) ? ' The message must have 5 or more characters.' : errors
+      case 'textarea': errors += (!isValidContactMessage(inputs[i].value)) ? ' The message must have 5 or more characters.' : ''
         break
     }
   }
@@ -57,6 +57,8 @@ var sendMessage = function(e) {
 var closeContactModal = function () {
   document.querySelector('#contact-message-error').textContent = ''
   document.querySelector('.modal-contact').style.display = 'none'
+  var inputs = document.querySelectorAll('.contact-input')
+  for (var k = 0; k < inputs.length; k++) inputs[k].value = ''
 }
 
 var contactUs = function() {
