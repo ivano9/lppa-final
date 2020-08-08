@@ -109,6 +109,7 @@ var loadingPoint = function(linkId) {
   moves = LSKey.moves
   players = []
   playerTurn = []
+  
   for (var i = 0; i < LSKey.players.length; i++) {
     players.push(new Player(LSKey.players[i].name, LSKey.players[i].color, LSKey.players[i].order))
     playerTurn.push(new Turn(players[i]))

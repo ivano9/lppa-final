@@ -7,12 +7,11 @@ var modal = null,
     ROWS = 6,
     board = [],
     players = [],
-    colors = ['b3d4fc', 'edf055', 'ab22f1']
+    colors = ['FF0000', '00FF00', '0000FF']
 
 var createBoard = function() {
-  for (var i = 0; i < COLUMNS; i++) {
+  for (var i = 0; i < COLUMNS; i++)
     board[i] = new Array(ROWS)
-  }
 }
 
 var setUpGame = function(e) {
@@ -27,8 +26,9 @@ var setUpGame = function(e) {
   var inputPlayers = document.querySelectorAll('input.in-player')
   
   for (var i = 0; i < inputPlayers.length; i++)
-    if (!validInput(inputPlayers[i].value,0)) return showMessageError('message-e', 'The name must have 3 character or' +
-       ' more')
+    if (!validInput(inputPlayers[i].value) || !isAWordWOWitheSpaces(inputPlayers[i].value))
+      return showMessageError('message-e', 'The name must not contain any numbers or white spaces and must be at' +
+         ' least 3 characters.')
 
   for (var i = 0; i < inputPlayers.length; i++)
     players.push(new Player(inputPlayers[i].value, colors[i], ++order))
@@ -60,9 +60,7 @@ var showInput2Players = function() {
   for (var i = 0; i < numberOfInputs.length; i++)
     numberOfInputs[i].value = ''
   
-  if (numberOfInputs.length > 2) {
-    removeElement('l-p-3')
-  }
+  if (numberOfInputs.length > 2) removeElement('l-p-3')
   
   numberPlayers.style.display = 'block'
 }

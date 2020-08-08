@@ -62,18 +62,6 @@ body {
   transition: ease 0.6s;
 }
 
-.game .board .column .spot.b3d4fc {
-  background-color: #b3d4fc;
-}
-
-.game .board .column .spot.edf055 {
-  background-color: #edf055;
-}
-
-.game .board .column .spot.ab22f1 {
-  background-color: #ab22f1;
-}
-
 .player-turn {
   font-family: "Press Start 2P";
   font-size: 17px;

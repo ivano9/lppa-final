@@ -99,7 +99,7 @@ var columnsCheck = function(col) {
   colorCount = 0
   
   for (var i = 0; i < board[col].length; i++) {
-    if (board[col][i] === currentTurn.getPlayer().getColor()) {
+    if (board[col][i] === currentTurn.getPlayer().getName()) {
       colorCount++
       if (colorCount === INLINETOWIN) throw gameOver(currentTurn)
     } else colorCount = 0
@@ -110,7 +110,7 @@ var rowsCheck = function(row) {
   colorCount = 0
   
   for (var i = 0; i < columnsHTML.length; i++) {
-    if (board[i][row] === currentTurn.getPlayer().getColor()) {
+    if (board[i][row] === currentTurn.getPlayer().getName()) {
       colorCount++
       if (colorCount === INLINETOWIN) throw gameOver(currentTurn)
     } else colorCount = 0
@@ -121,14 +121,14 @@ var descDiagCheck = function(col, row) {
   colorCount = 0
   
   for (var i = col, j = row; i >= 0 && i < columnsHTML.length && j >= 0 && j < board[col].length; i++, j--){
-    if (board[i][j] === currentTurn.getPlayer().getColor()) {
+    if (board[i][j] === currentTurn.getPlayer().getName()) {
       colorCount++
       if (colorCount === INLINETOWIN) throw gameOver(currentTurn)
     } else break
   }
   
   for (;col >= 0 && row < board[col].length; col--, row++) {
-    if (board[col][row] === currentTurn.getPlayer().getColor()) {
+    if (board[col][row] === currentTurn.getPlayer().getName()) {
       colorCount++
       if (colorCount === INLINETOWIN + 1) throw gameOver(currentTurn)
     } else return
@@ -143,7 +143,7 @@ var ascDiagCheck = function(col, row) {
      i >= 0 && i < columnsHTML.length && j >= 0 && j < board[col].length;
      i++, j++
   ) {
-    if (board[i][j] === currentTurn.getPlayer().getColor()) {
+    if (board[i][j] === currentTurn.getPlayer().getName()) {
       colorCount++
       if (colorCount === INLINETOWIN) throw gameOver(currentTurn)
     } else colorCount = 0
@@ -166,23 +166,21 @@ var checkWin = function(col, row) {
 
 var columnEventHandler = function(evt) {
   var columnId = +evt.target.id.substr(1, 1)
-  for (var i = 0; i < board[columnId].length; i++) {
+  for (var i = 0; i < board[columnId].length; i++)
     if (!board[columnId][i]) {
-      board[columnId][i] = currentTurn.getPlayer().getColor()
+      board[columnId][i] = currentTurn.getPlayer().getName()
       render()
       checkTie()
       checkWin(columnId, i)
       toggleTurn()
       break
     }
-  }
 }
 
 var bindColumnHandlers = function() {
   columnsHTML = document.getElementsByClassName('column')
-  for (var i = 0; i < columnsHTML.length; i++) {
+  for (var i = 0; i < columnsHTML.length; i++)
     columnsHTML[i].onclick = columnEventHandler
-  }
 }
 
 var render = function() {
@@ -196,6 +194,7 @@ var render = function() {
     }
     html += '</div>'
   }
+  
   boardHTML.innerHTML = html
   bindColumnHandlers()
 }
@@ -209,9 +208,22 @@ var startPlayerTurn = function() {
                     (Math.random() >= .333333333 && Math.random() < .666666666) ? playerTurn[1] : playerTurn[2]
 }
 
+var createDynamicStyle = function() {
+  var sty = document.createElement('style'),
+      html = ''
+  
+  sty.type = 'text/css'
+  for (var i = 0; i < playerTurn.length; i++)
+    html += '.game .board .column .spot.' + playerTurn[i].getPlayer().getName() + ' { background-color: #' + playerTurn[i].getPlayer().getColor() + ';} '
+  
+  sty.innerHTML = html
+  document.querySelector('head').appendChild(sty)
+}
+
 var startGame = function() {
   boardHTML = document.getElementById('board')
   startPlayerTurn()
+  createDynamicStyle()
   displayTurn(currentTurn)
   checkLSSupport()
   render()

@@ -1,5 +1,10 @@
 'use strict'
 
+var isAWordWOWitheSpaces = function(value) {
+  var re = /^[a-zA-Z]*$/
+  return re.test(value)
+}
+
 var validInput = function(value) {
   return value.length > 2
 }
