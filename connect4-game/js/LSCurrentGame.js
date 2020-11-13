@@ -34,38 +34,10 @@ var storageAvailable = function(type) {
   }
 }
 
-var clearBoard = function() {
-  var btn = document.getElementById('btn-clean-board')
-  btn.onclick = function() {
-    for (var i = 0; i < board.length; i++){
-      for (var j = 0; j < board[0].length; j++) {
-        board[i][j] = null
-      }
-    }
-    moves = 0
-    boardHTML.style.pointerEvents = 'all'
-    render()
-  }
-}
-
-var restartGame = function() {
-  var btn = document.getElementById('btn-restart-game')
-  btn.onclick = function() {
-    location.reload()
-  }
-}
-
 var addLSButtons = function() {
-  var buttonsLS = document.getElementById('sl-btn'),
-      buttonsCR = document.getElementById('cr-btn')
-  
-  buttonsLS.style.display = 'block'
-  buttonsCR.style.display = 'block'
-  
+  document.getElementById('sl-btn').style.display = 'block'
   saveGameEvent()
   loadGameEvent()
-  clearBoard()
-  restartGame()
 }
 
 var setAvailableKey = function() {

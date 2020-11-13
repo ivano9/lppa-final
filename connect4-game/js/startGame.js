@@ -1,23 +1,18 @@
 'use strict'
-// var colorPicker = new iro.ColorPicker('#picker')
-// function onColorChange(color) {
-//   console.log(color.hexString)
-// }
-// colorPicker.on('color:change', onColorChange)
 
 var boardHTML = null,
-    columnsHTML = null,
-    currentTurn = null,
-    playerTurn = [],
-    INLINETOWIN = 4,
-    moves = 0,
-    colorCount,
-    modal = null
+   columnsHTML = null,
+   currentTurn = null,
+   playerTurn = [],
+   INLINETOWIN = 4,
+   moves = 0,
+   colorCount,
+   modal = null
 
 var displayTurn = function(cTurn) {
   var displayTurn = document.getElementById('player-turn')
   displayTurn.style.color = '#' + cTurn.getPlayer().getColor()
-  displayTimer(cTurn.getMin(),cTurn.getSec())
+  displayTimer(cTurn.getMin(), cTurn.getSec())
   return displayTurn.innerHTML = cTurn.getPlayer().getName().toUpperCase() + ' player\'s turn'
 }
 
@@ -25,8 +20,7 @@ var toggleTurn = function() {
   if (players.length === 2) {
     currentTurn = (currentTurn.getPlayer().getName() === playerTurn[1].getPlayer().getName()) ? playerTurn[0] : playerTurn[1]
     moves++
-  }
-  else {
+  } else {
     switch (currentTurn.getPlayer().getOrder()) {
       case 1:
         currentTurn = playerTurn[1]
@@ -40,7 +34,8 @@ var toggleTurn = function() {
         currentTurn = playerTurn[0]
         moves++
         break
-      default: console.log('Something was wrong with turns...')
+      default:
+        console.log('Something was wrong with turns...')
     }
   }
   displayTurn(currentTurn)
@@ -57,7 +52,7 @@ var gameOver = function(turn) {
 
 var playAgain = function() {
   modal = document.getElementById('modal-games')
-  for (var i = 0; i < board.length; i++){
+  for (var i = 0; i < board.length; i++) {
     for (var j = 0; j < board[0].length; j++) {
       board[i][j] = null
     }
@@ -86,13 +81,12 @@ var showModalTie = function() {
 var checkTie = function() {
   if (players.length === 2)
     if (moves === 42) {
-    stopTimer = true
-    showModalTie()
-  }
-  else if (moves === 90) {
-    stopTimer = true
-    showModalTie()
-  }
+      stopTimer = true
+      showModalTie()
+    } else if (moves === 90) {
+      stopTimer = true
+      showModalTie()
+    }
 }
 
 var columnsCheck = function(col) {
@@ -120,14 +114,14 @@ var rowsCheck = function(row) {
 var descDiagCheck = function(col, row) {
   colorCount = 0
   
-  for (var i = col, j = row; i >= 0 && i < columnsHTML.length && j >= 0 && j < board[col].length; i++, j--){
+  for (var i = col, j = row; i >= 0 && i < columnsHTML.length && j >= 0 && j < board[col].length; i++, j--) {
     if (board[i][j] === currentTurn.getPlayer().getName()) {
       colorCount++
       if (colorCount === INLINETOWIN) throw gameOver(currentTurn)
     } else break
   }
   
-  for (;col >= 0 && row < board[col].length; col--, row++) {
+  for (; col >= 0 && row < board[col].length; col--, row++) {
     if (board[col][row] === currentTurn.getPlayer().getName()) {
       colorCount++
       if (colorCount === INLINETOWIN + 1) throw gameOver(currentTurn)
@@ -205,12 +199,12 @@ var startPlayerTurn = function() {
   
   if (players.length === 2) currentTurn = Math.random() > .5 ? playerTurn[0] : playerTurn[1]
   else currentTurn = (Math.random() >= 0 && Math.random() < .333333333) ? playerTurn[0] :
-                    (Math.random() >= .333333333 && Math.random() < .666666666) ? playerTurn[1] : playerTurn[2]
+     (Math.random() >= .333333333 && Math.random() < .666666666) ? playerTurn[1] : playerTurn[2]
 }
 
 var createDynamicStyle = function() {
   var sty = document.createElement('style'),
-      html = ''
+     html = ''
   
   sty.type = 'text/css'
   for (var i = 0; i < playerTurn.length; i++)

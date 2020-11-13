@@ -14,6 +14,26 @@ var createBoard = function() {
     board[i] = new Array(ROWS)
 }
 
+var clearBoard = function() {
+  var btn = document.getElementById('btn-clean-board')
+  btn.onclick = function() {
+    for (var i = 0; i < board.length; i++)
+      for (var j = 0; j < board[0].length; j++)
+        board[i][j] = null
+    
+    moves = 0
+    boardHTML.style.pointerEvents = 'all'
+    render()
+  }
+}
+
+var restartGame = function() {
+  var btn = document.getElementById('btn-restart-game')
+  btn.onclick = function() {
+    location.reload()
+  }
+}
+
 var setUpGame = function(e) {
   e.preventDefault()
   var order = 0
@@ -33,10 +53,31 @@ var setUpGame = function(e) {
   for (var i = 0; i < inputPlayers.length; i++)
     players.push(new Player(inputPlayers[i].value, colors[i], ++order))
   
+  document.getElementById('cr-btn').style.display = 'block'
+  
   createBoard()
   startGame()
+  clearBoard()
+  restartGame()
   contactUs()
   modal.style.display = 'none'
+}
+
+var btnEventHandler = function() {
+  var html = ''
+  
+  // TODO modal for where show palet of colors
+  // var colorPicker = new iro.ColorPicker('#picker')
+  // function onColorChange(color) {
+  //   console.log(color.hexString)
+  // }
+  // colorPicker.on('color:change', onColorChange)
+}
+
+var bindButtonsColorsHandlers = function() {
+  var btnsColors = document.querySelectorAll('.btn')
+  for (var i = 0; i < btnsColors.length; i++)
+    btnsColors[i].onclick = btnEventHandler
 }
 
 var showInput3Players = function() {
@@ -47,7 +88,8 @@ var showInput3Players = function() {
   if (numberOfInputs.length < 3) {
     html += '<div id="l-p-3" class="label-input">'
     html += '<label id="l3" class="label" for="p3">Name of player 3: </label>'
-    html += '<input id="p3" class="in-player" type="text" required> </div>'
+    html += '<input id="p3" class="in-player" type="text" required>'
+    html += '<button class="btn" type="button" required>Pick color</button> </div>'
     numberPlayers.innerHTML += html
     numberPlayers.style.display = 'block'
   }

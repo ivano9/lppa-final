@@ -83,6 +83,10 @@ a:hover {
   background-color: #fefefe;
 }
 
+.in-player {
+  margin-right: 10px;
+}
+
 .btn {
   border-bottom: solid 1px #fcd247;
   padding: 3px 1em;
